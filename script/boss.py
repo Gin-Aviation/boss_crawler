@@ -1,8 +1,10 @@
 import json
-
 import urllib3
+from boss_config import BossConfig
 
-DATA_PATH = "../data"
+config = BossConfig()
+DATA_PATH = config.get_property("data_folder_path")
+
 HEAD_PAGE_URL = "https://www.zhipin.com/"
 ZP_COMMON_URL = "https://www.zhipin.com/wapi/"
 
@@ -14,7 +16,7 @@ ZP_COMMON_JSON_DICT = {
 }
 
 http = urllib3.PoolManager()
-
+self_ip_url = "http://httpbin.org/ip"
 
 def get_zp_common_dict(data_url):
     position_rs = http.request("GET", data_url)
